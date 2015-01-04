@@ -116,11 +116,11 @@
 <p>Octopress로 GitHub에 블로그를 만드는 큰 그림은 다음과 같다.</p>
 
 <ul>
-<li><p>octopress를 로컬에 clone하고(clone한 repo를 octopress repo라 한다)</p></li>
-<li><p>octopress repo 내에서 이런저런 설정을 하고</p></li>
-<li><p>GitHub의 Repository를 octopress repo의 remote로 설정</p></li>
-<li><p>octopress repo 내의 source 폴더 내에서 규약에 맞게 포스팅 할 블로그 파일 작성</p></li>
-<li><p>octopress repo를 remote로 push하면 GitHub의 Page 기능을 통해 블로그 내용이 웹 페이지로 반영</p></li>
+<li><p>octopress를 로컬에 clone하고(로컬에 clone한 repo를 앞으로 <code>octopress repo</code>라 한다)</p></li>
+<li><p><code>octopress repo</code> 내에서 이런저런 설정을 하고</p></li>
+<li><p>GitHub의 Repository를 <code>octopress repo</code>의 remote로 설정</p></li>
+<li><p><code>octopress repo</code> 내의 source 폴더 내에서 규약에 맞게 포스팅 할 블로그 파일(.markdown 파일) 작성</p></li>
+<li><p><code>octopress repo</code>를 remote로 push하면 GitHub의 Page 기능을 통해 블로그 내용이 웹 페이지로 반영</p></li>
 </ul>
 
 
@@ -181,7 +181,7 @@
 <h2>Octopress 설정</h2>
 
 <ol>
-<li><p>octopress repo를 로컬에 clone 후 bundler로 관련 프로그램 설치</p>
+<li><p><code>octopress repo</code>를 로컬에 clone 후 bundler로 관련 프로그램 설치</p>
 
 <p> 다음의 명령 차례로 실행</p>
 
@@ -206,9 +206,9 @@
 
 <h2>Github Respository 생성</h2>
 
-<p>GitHub 에서 이름이 GitHub_UserName.github.io 인 repository를 새로 생성한다.</p>
+<p>GitHub 에서 이름이 GitHub_UserName.github.io 인 repository를 새로 생성한다(앞으로 <code>GitHub repo</code>라 한다).</p>
 
-<p>나중에 이 repo에서 블로그 컨텐츠를 관리하게 된다.</p>
+<p>나중에 이 <code>GitHub repo</code>에서 블로그 컨텐츠를 관리하게 된다.</p>
 
 <p><img src="http://i.imgur.com/ivZZLBM.png" alt="" /></p>
 
@@ -218,11 +218,28 @@
 <li><p>octopress에서 제공하는 GitHub 연계 자동 설정 프로그램 실행</p>
 
 <blockquote><p>rake setup_github_pages</p></blockquote></li>
-<li><p>앞 단계에서 GitHub에 생성한 repository의 url 입력</p>
+<li><p><code>GitHub repo</code>의 url 입력</p>
 
 <p> <img src="http://i.imgur.com/LXjTPk3.png" alt="" /></p></li>
 </ol>
 
+
+<p><code>rake setup_github_pages</code>는 아래의 사항을 처리한다.</p>
+
+<ul>
+<li>imathis/octopress를 가리키고 있던 <code>origin</code>을 <code>octopress</code>로 이름 변경</li>
+<li><code>origin</code>이 <code>GitHub repo</code>를 가리키도록 설정</li>
+<li>active 브랜치를 <code>master</code>에서 <code>source</code>로 변경(즉 <code>master</code> 브랜치는 없어지고 <code>source</code> 브랜치 생성)</li>
+<li>블로그 URL 설정</li>
+<li>octopress에 의해 생성된 최종 블로그 내용을 담는 <code>_deploy</code> 폴더에 별도의 repo(앞으로 <code>deploy repo</code>라 한다)와 <code>master</code> 브랜치 생성</li>
+</ul>
+
+
+<p>결론적으로 블로그를 생성하는 <code>octopress repo</code>는 <code>GitHub repo</code>의 <code>source</code> 브랜치로 저장되고,</p>
+
+<p>octopress에 의해 생성되는 블로그 컨텐츠를 담고 있는 <code>deploy repo</code>의 <code>master</code> 브랜치가 <code>GitHub repo</code>의 <code>master</code> 브랜치로 저장되며,</p>
+
+<p><code>http://GitHub_UserName.github.io/</code>로 접근하면 <code>GitHub repo</code>의 <code>master</code> 브랜치의 내용(즉, <code>deploy repo</code>에서 push 된 내용)이 브라우저에 표시된다.</p>
 
 <h2>블로그 생성 및 미리 보기</h2>
 
@@ -297,7 +314,9 @@
 <p> <img src="http://i.imgur.com/QGODGpU.png" alt="" /></p></li>
 <li><p>일반적인 Git commit/push 활용</p>
 
-<p> <code>rake deploy</code>도 사실 Git 명령을 wrapping한 것에 불과하다(자세한 내용은 <code>Rakefile</code> 파일을 열어보면 알 수 있다). 당연히 직접 Git로도 가능한데, 게시물 작성 후 <code>rake generate</code>에 의해 .html로 변환된 내용이 들어있는 public를 _deploy 폴더로 복사한 후 git add/commit/push를 수행하면 된다.</p>
+<p> <code>rake deploy</code>도 사실 Git 명령을 wrapping한 것에 불과하다(자세한 내용은 <code>Rakefile</code> 파일을 열어보면 알 수 있다).</p>
+
+<p> 따라서 당연히 직접 Git로도 가능한데, 게시물 작성 후 <code>rake generate</code>에 의해 .html로 변환된 내용이 들어있는 public 폴더의 내용을 _deploy 폴더로 복사한 후 git add/commit/push를 수행하면 된다. 이 방식으로 하면 커밋 메시지를 원하는 대로 작성할 수 있는 장점도 있다.</p>
 
 <blockquote><p>rake generate</p>
 
@@ -317,9 +336,11 @@
 
 <hr />
 
-<p>다시 봐도, 아무리 기본이라지만 너무 허접하지 않은가..</p>
+<p>이걸로 Octopress로 GitHub에 블로그를 만들어 게시하는 것 까지는 성공했다.</p>
 
-<p>2탄에서 여러가지 설정을 통해 허접한 기본 블로그를 봐줄 만한 블로그로 변신시켜보자.</p>
+<p>기본 테마와 폰트 등 맘에 들지 않는 구석이 많지만 1탄은 여기까지로 하고,</p>
+
+<p>2탄에서는 첫 번째 블로그 게시글(.markdown 파일)을 작성하고, 블로그로 게시할 수 있는 .html 파일로 변환하고, GitHub에 배포해보자.</p>
 </div>
   
   
