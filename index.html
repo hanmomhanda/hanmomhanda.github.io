@@ -9,7 +9,7 @@
   <meta name="author" content="Your Name">
 
   
-  <meta name="description" content=" Blog Archives Recent Posts ">
+  <meta name="description" content="새해 맞이 프로젝트 중 하나로 블로그를 운영해보려 한다. 네이버나 구글 등에서 제공하는 블로그 서비스를 이용하거나 워드프레스를 이용해서 만드는 방법도 있겠지만, 주로 개발 관련 공부 내용을 정리하고 공유하는 목적이라 다음과 같은 요건이 필요했다. 예쁜 Syntax &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +66,234 @@
       <div class="blog-index">
   
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/04/octopress-github-blog-01/">Octopress로 GitHub에 블로그 만들기-1</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-04T17:12:26+09:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:12 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>새해 맞이 프로젝트 중 하나로 블로그를 운영해보려 한다.</p>
+
+<p>네이버나 구글 등에서 제공하는 블로그 서비스를 이용하거나 워드프레스를 이용해서 만드는 방법도 있겠지만, 주로 개발 관련 공부 내용을 정리하고 공유하는 목적이라 다음과 같은 요건이 필요했다.</p>
+
+<blockquote><p>예쁜 Syntax Highlight</p>
+
+<p>귀찮은 설치형은 가급적 배제</p>
+
+<p>markdown으로 빠르고 쉽게 블로그 작성</p>
+
+<p>깨알 같은 플러그인 기능이 있다면 금상첨화</p></blockquote>
+
+<p>찾아보니 Static Site Generator라는 게 있더라~</p>
+
+<p><a href="https://www.staticgen.com/,">https://www.staticgen.com/,</a> <a href="https://staticsitegenerators.net/,">https://staticsitegenerators.net/,</a> <a href="http://mashable.com/2014/08/28/static-website-generators/">http://mashable.com/2014/08/28/static-website-generators/</a> 를 참고해서 <a href="http://octopress.org/">Octopress</a>를 사용하기로 했다.</p>
+
+<p>Octopress는 GitHub, Heroku, Rsync 호스팅을 지원하는데 Rsync는 잘 모르겠고, GitHub 과 Heroku 중에서 선택하기 위해 검색을 하다가 <a href="https://bigdatatools.wordpress.com/2013/08/05/octopress-on-heroku-vs-github/">https://bigdatatools.wordpress.com/2013/08/05/octopress-on-heroku-vs-github/</a> 를 보고 GitHub로 하기로 했다. 글에 따르면 Heroku는 다음과 같은 단점이..</p>
+
+<blockquote><p>트래픽이 증가하면 Dyno를 추가해야 한다. &lt;- Dyno는 뭐냐..</p>
+
+<p>Heroku의 가상 머신은 웹 페이지에 1시간 동안 접속이 없으면 sleep mode가 되고, sleep mode 인 상태에서 누군가 접속하면 페이지 로딩에 시간이 좀 걸린다. &lt;- 치명적이다..</p>
+
+<p>Heroku는 SSH Key를 Dropbox 같은 걸로 공유하지 않으면 여러 PC에서 작업을 할 수가 없다. &lt;- 치명적이다..(2)</p></blockquote>
+
+<p>결국 Octopress와 GitHub의 조합으로 블로그를 만들기로 했다.</p>
+
+<p>Octopress로 GitHub에 블로그를 만드는 큰 그림은 다음과 같다.</p>
+
+<ul>
+<li><p>octopress를 로컬에 clone하고(clone한 repo를 octopress repo라 한다)</p></li>
+<li><p>octopress repo 내에서 이런저런 설정을 하고</p></li>
+<li><p>GitHub의 Repository를 octopress repo의 remote로 설정</p></li>
+<li><p>octopress repo 내의 source 폴더 내에서 규약에 맞게 포스팅 할 블로그 파일 작성</p></li>
+<li><p>octopress repo를 remote로 push하면 GitHub의 Page 기능을 통해 블로그 내용이 웹 페이지로 반영</p></li>
+</ul>
+
+
+<p>큰 그림을 대략 머리에 넣어두고 Octopress로 GitHub에 블로그를 만들어보자.</p>
+
+<p>Octopress에서도 <a href="http://octopress.org/docs/setup/">설정 방법</a>을 간단 명료하게 잘 만들어놨으니 참고하자.</p>
+
+<h2>사전 설치 내용</h2>
+
+<ol>
+<li><p>Git 설치</p>
+
+<p> Octopress는 Git을 기반으로 작동하며, GitHub를 이용하려면 당연히 Git가 필요하다.
+ Git의 설치는 <a href="http://www.git-scm.com/">http://www.git-scm.com/</a> 참조</p></li>
+<li><p>Ruby 1.9.3+ 설치</p>
+
+<p> Ruby는 잘 모르지만 Octopress의 설치 매뉴얼에 따르면 rbenv 와 RVM 두 가지 방법으로 Ruby의 설치가 가능한데, RVM이 더 간단해보여 여기서는 RVM으로 진행한다.</p>
+
+<ul>
+<li><p>RVM 설치</p>
+
+<blockquote><p>curl -L <a href="https://get.rvm.io">https://get.rvm.io</a> | bash -s stable &ndash;ruby</p></blockquote>
+
+<p>  처음 실행하면 아래와 같이 signature 관련 에러 발생하는데</p>
+
+<p>  <img src="http://i.imgur.com/PJ5MakW.png" alt="" /></p>
+
+<p>  화면에 안내된대로 아래의 명령을 수행하면 해결된다.</p>
+
+<blockquote><p>gpg &ndash;keyserver hkp://keys.gnupg.net &ndash;recv-keys #######</p></blockquote>
+
+<p>  다시 아래의 명령 실행</p>
+
+<blockquote><p>curl -L <a href="https://get.rvm.io">https://get.rvm.io</a> | bash -s stable &ndash;ruby</p></blockquote>
+
+<p>  <img src="http://i.imgur.com/GmoNNol.png" alt="" /></p>
+
+<p>  <img src="http://i.imgur.com/ozqAHGM.png" alt="" /></p>
+
+<blockquote><p>sudo 비번 입력</p></blockquote>
+
+<p>  나머지 필요한 프로그램 및 ruby 자동 설치 완료 후 아래 명령 실행</p>
+
+<blockquote><p>source /home/hanmomhanda/.rvm/scripts/rvm</p></blockquote>
+
+<p>  <img src="http://i.imgur.com/wWYsmQI.png" alt="" /></p></li>
+</ul>
+</li>
+</ol>
+
+
+<h2>Octopress 설정</h2>
+
+<ol>
+<li><p>octopress repo를 로컬에 clone 후 bundler로 관련 프로그램 설치</p>
+
+<p> 다음의 명령 차례로 실행</p>
+
+<blockquote><p>git clone git://github.com/imathis/octopress.git octopress</p>
+
+<p>cd octopress</p>
+
+<p>gem install bundler</p>
+
+<p>bundle install</p></blockquote>
+
+<p> <img src="http://i.imgur.com/VfqQohw.png" alt="" /></p>
+
+<p> <img src="http://i.imgur.com/QSmnYlp.png" alt="" /></p></li>
+<li><p>기본 테마 기준으로 source 폴더에 초기 파일 생성</p>
+
+<blockquote><p>rake install</p></blockquote>
+
+<p> <img src="http://i.imgur.com/zXx7ykO.png" alt="" /></p></li>
+</ol>
+
+
+<h2>Github Respository 생성</h2>
+
+<p>GitHub 에서 이름이 GitHub_UserName.github.io 인 repository를 새로 생성한다.</p>
+
+<p>나중에 이 repo에서 블로그 컨텐츠를 관리하게 된다.</p>
+
+<p><img src="http://i.imgur.com/ivZZLBM.png" alt="" /></p>
+
+<h2>Octopress - GitHub 연계</h2>
+
+<ol>
+<li><p>octopress에서 제공하는 GitHub 연계 자동 설정 프로그램 실행</p>
+
+<blockquote><p>rake setup_github_pages</p></blockquote></li>
+<li><p>앞 단계에서 GitHub에 생성한 repository의 url 입력</p>
+
+<p> <img src="http://i.imgur.com/LXjTPk3.png" alt="" /></p></li>
+</ol>
+
+
+<h2>블로그 생성 및 미리 보기</h2>
+
+<ol>
+<li><p>블로그 생성, markdown으로 작성한 포스트의 html 변환 등 수행</p>
+
+<blockquote><p>rake generate</p></blockquote>
+
+<p> <img src="http://i.imgur.com/BzDm3r9.png" alt="" /></p></li>
+<li><p>블로그 미리 보기</p>
+
+<p> <code>rake generate</code>으로 생성된 블로그를 아래의 명령으로 미리보기 할 수 있다.</p>
+
+<blockquote><p>rake preview</p></blockquote>
+
+<p> <img src="http://i.imgur.com/JN1ygQL.png" alt="" /></p>
+
+<ul>
+<li>위와 같이 <code>write public/stylesheets/screen.css</code> 까지 화면에 찍히면 브라우저에서 <code>http://localhost:4000/</code>로 접속해서 미리 보기를 확인할 수 있다.</li>
+</ul>
+
+
+<p> <img src="http://i.imgur.com/I2lvl3n.png" alt="" /></p></li>
+</ol>
+
+
+<h2>GitHub에 deploy</h2>
+
+<p>일단 미리보기가 제대로 나온다면 기본적으로 블로그를 만들 준비는 되었다.</p>
+
+<p>이 상태로 먼저 GitHub에 올려서 준비 단계를 마치자.</p>
+
+<p>Octopress에서는 rake를 통해 GitHub에 쉽게 deploy하는 프로그램도 제공한다.</p>
+
+<p>하지만 rake를 통하지 않고도 일반적인 Git commit/push 로 해도 무방하다.(Git에 익숙하다면 오히려 이 방법이 더 편리하다)</p>
+
+<blockquote><p>rake deploy</p></blockquote>
+
+<p><img src="http://i.imgur.com/MZKs2uq.png" alt="" /></p>
+
+<p><img src="http://i.imgur.com/zvQpPy7.png" alt="" /></p>
+
+<p>GitHub의 계정 정보를 입력한다.</p>
+
+<p><img src="http://i.imgur.com/m6rdL7l.png" alt="" /></p>
+
+<p>git pull 이 제대로 수행되지 않아 발생하는 오류인데, 화면에서 안내해 준대로 다음의 명령을 수행해서 remote 브랜치를 설정해준다.</p>
+
+<blockquote><p>cd _deploy
+git branch &ndash;set-upstream-to=origin/master master</p></blockquote>
+
+<p>를 실행하고, 다시 <code>rake deploy</code> 실행</p>
+
+<p><img src="http://i.imgur.com/F64CUlx.png" alt="" /></p>
+
+<p>Merge MSG 화면에서 CTRL+X 로 빠져나오면 다음과 같이 Push를 위해 GitHub 계정 정보를 묻는다.</p>
+
+<p><img src="http://i.imgur.com/WyyTiD4.png" alt="" /></p>
+
+<p>계정 정보를 입력하면 Push가 완료된다.</p>
+
+<p><img src="http://i.imgur.com/3kF7CCW.png" alt="" /></p>
+
+<p>이제 GitHub_UserName.github.io에 접근하면 다음과 같이 GitHub에 deploy된 기본 블로그를 확인할 수 있다.</p>
+
+<p><img src="http://i.imgur.com/QGODGpU.png" alt="" /></p>
+
+<p>다시 봐도, 아무리 기본이라지만 너무 허접하지 않은가..</p>
+
+<p>2탄에서 여러가지 설정을 통해 허접한 기본 블로그를 봐줄 만한 블로그로 변신시켜보자.</p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -77,6 +305,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/01/04/octopress-github-blog-01/">Octopress로 GitHub에 블로그 만들기-1</a>
+      </li>
     
   </ul>
 </section>
