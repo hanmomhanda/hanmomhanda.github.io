@@ -246,40 +246,63 @@
 
 <p>이 상태로 먼저 GitHub에 올려서 준비 단계를 마치자.</p>
 
-<p>Octopress에서는 rake를 통해 GitHub에 쉽게 deploy하는 프로그램도 제공한다.</p>
+<p>GitHub에 올리는 방법은 두 가지가 있다.</p>
 
-<p>하지만 rake를 통하지 않고도 일반적인 Git commit/push 로 해도 무방하다.(Git에 익숙하다면 오히려 이 방법이 더 편리하다)</p>
+<ol>
+<li><p>Octopress가 제공하는 rake deploy 이용</p>
+
+<p> Octopress에서는 rake를 통해 GitHub에 쉽게 deploy하는 프로그램도 제공한다.</p>
 
 <blockquote><p>rake deploy</p></blockquote>
 
-<p><img src="http://i.imgur.com/MZKs2uq.png" alt="" /></p>
+<p> <img src="http://i.imgur.com/MZKs2uq.png" alt="" /></p>
 
-<p><img src="http://i.imgur.com/zvQpPy7.png" alt="" /></p>
+<p> <img src="http://i.imgur.com/zvQpPy7.png" alt="" /></p>
 
-<p>GitHub의 계정 정보를 입력한다.</p>
+<p> GitHub의 계정 정보를 입력한다.</p>
 
-<p><img src="http://i.imgur.com/m6rdL7l.png" alt="" /></p>
+<p> <img src="http://i.imgur.com/m6rdL7l.png" alt="" /></p>
 
-<p>git pull 이 제대로 수행되지 않아 발생하는 오류인데, 화면에서 안내해 준대로 다음의 명령을 수행해서 remote 브랜치를 설정해준다.</p>
+<p> git pull 이 제대로 수행되지 않아 발생하는 오류인데, 화면에서 안내해 준대로 다음의 명령을 수행해서 remote 브랜치를 설정해준다.</p>
 
-<blockquote><p>cd _deploy
-git branch &ndash;set-upstream-to=origin/master master</p></blockquote>
+<blockquote><p>cd _deploy</p>
 
-<p>를 실행하고, 다시 <code>rake deploy</code> 실행</p>
+<p>git branch &ndash;set-upstream-to=origin/master master</p></blockquote>
 
-<p><img src="http://i.imgur.com/F64CUlx.png" alt="" /></p>
+<p> 를 실행하고, 다시 <code>rake deploy</code> 실행</p>
 
-<p>Merge MSG 화면에서 CTRL+X 로 빠져나오면 다음과 같이 Push를 위해 GitHub 계정 정보를 묻는다.</p>
+<p> <img src="http://i.imgur.com/F64CUlx.png" alt="" /></p>
 
-<p><img src="http://i.imgur.com/WyyTiD4.png" alt="" /></p>
+<p> Merge MSG 화면에서 CTRL+X 로 빠져나오면 다음과 같이 Push를 위해 GitHub 계정 정보를 묻는다.</p>
 
-<p>계정 정보를 입력하면 Push가 완료된다.</p>
+<p> <img src="http://i.imgur.com/WyyTiD4.png" alt="" /></p>
 
-<p><img src="http://i.imgur.com/3kF7CCW.png" alt="" /></p>
+<p> 계정 정보를 입력하면 Push가 완료된다.</p>
 
-<p>이제 GitHub_UserName.github.io에 접근하면 다음과 같이 GitHub에 deploy된 기본 블로그를 확인할 수 있다.</p>
+<p> <img src="http://i.imgur.com/3kF7CCW.png" alt="" /></p>
 
-<p><img src="http://i.imgur.com/QGODGpU.png" alt="" /></p>
+<p> 이제 GitHub_UserName.github.io에 접근하면 다음과 같이 GitHub에 deploy된 기본 블로그를 확인할 수 있다.</p>
+
+<p> <img src="http://i.imgur.com/QGODGpU.png" alt="" /></p></li>
+<li><p>일반적인 Git commit/push 활용</p>
+
+<p> <code>rake deploy</code>도 사실 Git 명령을 wrapping한 것에 불과하다. 당연히 직접 Git로도 가능한데, 게시물 작성 후 <code>rake generate</code>에 의해 생성된 _deploy 폴더에서 git add/commit/push를 수행하면 된다.</p>
+
+<blockquote><p>rake generate</p>
+
+<p>cd _deploy</p>
+
+<p>git pull origin master</p>
+
+<p>git add .</p>
+
+<p>git commit -m &lsquo;커밋 메시지&rsquo;</p>
+
+<p>git push origin master</p></blockquote></li>
+</ol>
+
+
+<hr />
 
 <p>다시 봐도, 아무리 기본이라지만 너무 허접하지 않은가..</p>
 
