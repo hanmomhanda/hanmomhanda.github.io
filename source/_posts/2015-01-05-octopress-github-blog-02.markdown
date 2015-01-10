@@ -68,13 +68,13 @@ yaml front matter 메타데이터를 실제 내용에 맞게 수정하고, 그 �
 
 ![](http://i.imgur.com/ngtLG0x.png)
 
-블로그 URL을 주소차에 입력하여 접속하면 첫 번째 게시물을 확인할 수 있다.
+블로그 URL을 주소창에 입력하여 접속하면 첫 번째 게시물을 확인할 수 있다.
 
 ![](http://i.imgur.com/9rTQr7q.png)
 
 
 ----------
 
-2탄까지만으로도 Octopress로 GitHub에서 블로그를 운영하는데 부족함은 없다.
+2탄까지가 Octopress로 GitHub에서 블로그를 운영하는데 필요한 최소한의 내용이다.
 
-하지만 봐줄만 한 블로그를 만들려면 아직 손 봐야할 것이 남아있으니, 3탄에서 알아보기로 하자. 
+3탄에서는 가볍게 블로그 Title, SubTitle, Footer 등을 매만져보자.

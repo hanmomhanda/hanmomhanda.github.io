@@ -2,12 +2,12 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+url: http://hanmomhanda.github.io/
+title: 뒤태지존의 갈팡질팡
+subtitle: 몸부림 - 머리부림 - 멋부림
+author: hanmomhanda
 simple_search: https://www.google.com/search
-description:
+description: 애쓰는 블로그
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
