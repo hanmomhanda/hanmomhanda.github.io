@@ -9,9 +9,7 @@
   <meta name="author" content="hanmomhanda">
 
   
-  <meta name="description" content="새 게시물 작성/게시 큰 흐름 octopress repo에서 새 게시물을 작성하고 GitHub repo에 push해서 게시하는 큰 흐름은 다음과 같다. rake new_post[...]로 .markdown 파일 생성
-.markdown 파일 내용 작성
-rake &hellip;">
+  <meta name="description" content="_config.yml 블로그 전반적인 설정 정보는 octopress repo/_config.yml에서 수정할 수 있다. 설정 내용은 크게 세 가지로 카테고리로 나누어져 있다. 각 카테고리 별 세부 설정 정보는 파일 안에 주석으로 잘 설명되어 있다. Main &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,6 +65,96 @@ rake &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/10/octopress-github-blog-03/">Octopress로 GitHub에 블로그 만들기-3</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-10T13:10:00+09:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:10 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>_config.yml</h2>
+
+<p>블로그 전반적인 설정 정보는 <code>octopress repo/_config.yml</code>에서 수정할 수 있다.</p>
+
+<p>설정 내용은 크게 세 가지로 카테고리로 나누어져 있다. 각 카테고리 별 세부 설정 정보는 파일 안에 주석으로 잘 설명되어 있다.</p>
+
+<ul>
+<li><p>Main Configs</p>
+
+<p>  url, title, subtitle, author, 검색, 사이트 설명 등 블로그 정보 설정</p></li>
+<li><p>Jekyll &amp; Plugins</p>
+
+<p>  블로그 게시물 publishing을 위한 설정</p></li>
+<li><p>3rd Party Settings</p>
+
+<p>  <code>Github</code>, <code>페이스북 좋아요</code>, <code>Google Plus +1</code>, <code>트위터</code>, <code>Disqus</code> 등 써드 파티 애플리케이션과의 연계 설정</p></li>
+</ul>
+
+
+<h2>Main Configs</h2>
+
+<p>기본으로 설정되어 있는 블로그는 아래와 같은데, 블로그 제목, 부제목 등의 header 와 블로그 저자명이 있는 footer 를 변경해보자.</p>
+
+<h3>변경 전</h3>
+
+<h4>_config.yml</h4>
+
+<p><img src="http://i.imgur.com/7iAT4tq.png" alt="" /></p>
+
+<h4>블로그</h4>
+
+<p><img src="http://i.imgur.com/lcaf3BQ.png" alt="" /></p>
+
+<p><img src="http://i.imgur.com/CDRbsoS.png" alt="" /></p>
+
+<h3>변경 후</h3>
+
+<h4>_config.yml</h4>
+
+<p><img src="http://i.imgur.com/biP4wij.png" alt="" /></p>
+
+<p><code>_config.yml</code> 파일 수정 후 <code>rake preview</code>로 미리 보기한다(<code>rake preview</code>를 실행하면 <code>rake generate</code>도 실행된다).</p>
+
+<h4>블로그 미리 보기</h4>
+
+<p><img src="http://i.imgur.com/Pz4RavG.png" alt="" /></p>
+
+<p><img src="http://i.imgur.com/nuaxn0z.png" alt="" /></p>
+
+<h3>GitHub에 Deploy</h3>
+
+<p><a href="http://hanmomhanda.github.io/blog/2015/01/05/octopress-github-blog-02/">2탄</a> 내용을 참고해서 <code>public</code> 폴더의 내용을 <code>_deploy</code> 폴더로 복사하고, <code>_deploy</code> 폴더에서 <code>git add</code>와 <code>git commit</code>을 실행하고 <code>git push origin master</code>로 GitHub에 Deploy 한다.</p>
+
+<p>블로그 URL에 접속하면 아래와 같이 블로그 제목 등이 변경된 것을 확인할 수 있다.</p>
+
+<p><img src="http://i.imgur.com/ZBiu0Tp.png" alt="" /></p>
+
+<hr />
+
+<p>이제 <code>Octopress</code>로 블로그를 운영하는 큰 틀은 모두 돌아봤다.</p>
+
+<p>4탄에서는 폰트 변경, 소스 코드 쪼가리 넣기, 블로그 내용 일부만 먼저 보여주기 등을 다뤄본다.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -461,6 +549,10 @@ rake &hellip;">
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/01/10/octopress-github-blog-03/">Octopress로 GitHub에 블로그 만들기-3</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/01/05/octopress-github-blog-02/">Octopress로 GitHub에 블로그 만들기-2</a>
