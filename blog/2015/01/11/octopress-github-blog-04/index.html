@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Octopress로 GitHub에 블로그 만들기-4 - 뒤태지존의 갈팡질팡</title>
+  <meta name="author" content="hanmomhanda">
+
+  
+  <meta name="description" content="폰트 변경 개인 취향이겠지만 Octopress 에서 제공하는 기본 폰트는 한글이 그다지 예쁘게 보이지 않는다. 그래서 이번엔 웹 폰트를 써서 나눔 고딕으로 블로그의 폰트를 바꿔보자. 먼저 웹 폰트를 사용하기 위한 css 정보를 알아보고, 웹 폰트를 블로그에 적용하는 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://hanmomhanda.github.io//blog/2015/01/11/octopress-github-blog-04">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="뒤태지존의 갈팡질팡" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">뒤태지존의 갈팡질팡</a></h1>
+  
+    <h2>몸부림 - 머리부림 - 멋부림</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="hanmomhanda.github.io/">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Octopress로 GitHub에 블로그 만들기-4</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-11T00:46:00+09:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:46 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>폰트 변경</h2>
+
+<p>개인 취향이겠지만 Octopress 에서 제공하는 기본 폰트는 한글이 그다지 예쁘게 보이지 않는다. 그래서 이번엔 웹 폰트를 써서 나눔 고딕으로 블로그의 폰트를 바꿔보자.</p>
+
+<p>먼저 웹 폰트를 사용하기 위한 css 정보를 알아보고, 웹 폰트를 블로그에 적용하는 방법을 알아보자.</p>
+
+<h3>나눔 고딕 웹 폰트 CSS</h3>
+
+<p><a href="http://www.google.com/fonts/earlyaccess">http://www.google.com/fonts/earlyaccess</a> 에서 korean으로 텍스트 검색을 하면 여러 가지 한글 웹 폰트를 볼 수 있다.</p>
+
+<p>나눔 고딕 폰트에 대한 CSS 정보는 다음과 같다.</p>
+
+<blockquote><p>@import url(<a href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css">http://fonts.googleapis.com/earlyaccess/nanumgothic.css</a>);</p></blockquote>
+
+<p>나눔 고딕 폰트를 적용할 문서 요소에 아래와 같이 <code>font-family</code>를 지정해주면 된다.</p>
+
+<blockquote><p>font-family: &lsquo;Nanum Gothic&rsquo;, serif;</p></blockquote>
+
+<h3>블로그 적용 방법</h3>
+
+<p>블로그에 적용하려면 위 내용을 어느 CSS 파일에 적용해야 되는 지 알아야 한다.</p>
+
+<p>결론적으로 <code>octopress repo/sass/custom/_style.scss</code> 에 아래의 내용을 추가하면 된다.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="k">@import</span> <span class="nt">url</span><span class="o">(</span><span class="nt">http</span><span class="o">://</span><span class="nt">fonts</span><span class="nc">.googleapis.com</span><span class="o">/</span><span class="nt">earlyaccess</span><span class="o">/</span><span class="nt">nanumgothic</span><span class="nc">.css</span><span class="o">)</span><span class="p">;</span>
+</span><span class='line'><span class="nt">body</span><span class="o">,</span> <span class="nt">a</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span><span class="o">,</span> <span class="nt">h4</span><span class="o">,</span> <span class="nt">code</span>  <span class="p">{</span>
+</span><span class='line'>  <span class="k">font-family</span><span class="o">:</span> <span class="s1">&#39;Nanum Gothic&#39;</span><span class="o">,</span> <span class="k">serif</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>rake preview</code>를 실행 하면 폰트가 바뀐 것을 확인할 수 있다.</p>
+
+<h4>폰트 변경 전</h4>
+
+<p><img src="http://i.imgur.com/sanOiv5.png" alt="" /></p>
+
+<h4>폰트 변경 후</h4>
+
+<p><img src="http://i.imgur.com/tvEgAwS.png" alt="" /></p>
+
+<h3>Octopress 의 CSS 생성 방식</h3>
+
+<p>결론적으로 <code>_style.css</code> 만 수정하면 쉽게 웹 폰트를 적용할 수 있었는데, 내친 김에 그 메커니즘도 살짝 알아보고 가자.</p>
+
+<p><code>rake generate</code>나 <code>rake preview</code>를 실행 했을 때의 화면을 주의 깊게 봤다면 <code>screen.css</code> 파일을 새로 생성하는 것을 알 수 있었을 것이다.</p>
+
+<p>Octopress는 <code>octopress repo/sass/screen.scss</code> 파일을 이용해서 블로그에 실제 사용되는 최종적이고 유일한 CSS 파일인 <code>screen.css</code> 파일을 생성한다. <code>octopress repo/sass/screen.scss</code> 파일을 열어보면 다음과 같다.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="k">@import</span> <span class="s2">&quot;compass&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="k">@include</span> <span class="nt">global-reset</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">@import</span> <span class="s2">&quot;custom/colors&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="k">@import</span> <span class="s2">&quot;custom/fonts&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="k">@import</span> <span class="s2">&quot;custom/layout&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="k">@import</span> <span class="s2">&quot;base&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="k">@import</span> <span class="s2">&quot;partials&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="k">@import</span> <span class="s2">&quot;plugins/**/*&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="k">@import</span> <span class="s2">&quot;custom/styles&quot;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+즉, <code>octopress repo/sass/custom/_styles.scss</code> 에 의해 생성되는 <code>custom/styles</code> 파일을 가장 나중에 import 하므로, 다른 CSS에 설정된 내용보다 <code>_styles.scss</code>에 설정된 내용이 우선 적용되기 때문에 결론적으로 <code>_style.scss</code>에 웹 폰트 관련 내용을 적용하면 되는 것이다.</p>
+
+<p>실제로 <code>octopress repo/sass/custom/_styles.scss</code> 파일을 열어보면 주석에 관련 내용이 설명되어 있다.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">//</span> <span class="nt">This</span> <span class="nt">File</span> <span class="nt">is</span> <span class="nt">imported</span> <span class="nt">last</span><span class="o">,</span> <span class="nt">and</span> <span class="nt">will</span> <span class="nt">override</span> <span class="nt">other</span> <span class="nt">styles</span> <span class="nt">in</span> <span class="nt">the</span> <span class="nt">cascade</span>
+</span><span class='line'><span class="o">//</span> <span class="nt">Add</span> <span class="nt">styles</span> <span class="nt">here</span> <span class="nt">to</span> <span class="nt">make</span> <span class="nt">changes</span> <span class="nt">without</span> <span class="nt">digging</span> <span class="nt">in</span> <span class="nt">too</span> <span class="nt">much</span>
+</span><span class='line'><span class="k">@import</span> <span class="nt">url</span><span class="o">(</span><span class="nt">http</span><span class="o">://</span><span class="nt">fonts</span><span class="nc">.googleapis.com</span><span class="o">/</span><span class="nt">earlyaccess</span><span class="o">/</span><span class="nt">nanumgothic</span><span class="nc">.css</span><span class="o">)</span><span class="p">;</span>
+</span><span class='line'><span class="nt">body</span><span class="o">,</span> <span class="nt">a</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span><span class="o">,</span> <span class="nt">h4</span><span class="o">,</span> <span class="nt">code</span>  <span class="p">{</span>
+</span><span class='line'>  <span class="k">font-family</span><span class="o">:</span> <span class="s1">&#39;Nanum Gothic&#39;</span><span class="o">,</span> <span class="k">serif</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>최종 생성되는 <code>octopress repo/public/stylesheets/screen.css</code> 파일을 열어보면(모든 내용이 한 행으로 작성되어 있어 보기 편하지는 않다) 맨 마지막 부분에 <code>_styles.scss</code>에서 지정한 내용이 추가되어 있는 것을 확인할 수 있다.</p>
+
+<p><img src="http://i.imgur.com/emCEHMV.png" alt="" /></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">hanmomhanda</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-01-11T00:46:00+09:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:46 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/blog/'>blog</a>, <a class='category' href='/blog/categories/github/'>github</a>, <a class='category' href='/blog/categories/octopress/'>octopress</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://hanmomhanda.github.io//blog/2015/01/11/octopress-github-blog-04/" data-via="" data-counturl="http://hanmomhanda.github.io//blog/2015/01/11/octopress-github-blog-04/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/01/10/octopress-github-blog-03/" title="Previous Post: Octopress로 GitHub에 블로그 만들기-3">&laquo; Octopress로 GitHub에 블로그 만들기-3</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/01/11/octopress-github-blog-04/">Octopress로 GitHub에 블로그 만들기-4</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/10/octopress-github-blog-03/">Octopress로 GitHub에 블로그 만들기-3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/05/octopress-github-blog-02/">Octopress로 GitHub에 블로그 만들기-2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/04/octopress-github-blog-01/">Octopress로 GitHub에 블로그 만들기-1</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - hanmomhanda -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
