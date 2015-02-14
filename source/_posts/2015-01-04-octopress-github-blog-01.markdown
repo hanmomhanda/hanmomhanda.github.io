@@ -55,29 +55,29 @@ Octopress에서도 [설정 방법](http://octopress.org/docs/setup/)을 간단 �
 1. Git 설치
 
     Octopress는 Git을 기반으로 작동하며, GitHub를 이용하려면 당연히 Git가 필요하다.
-    Git의 설치는 http://www.git-scm.com/ 참조 
+    Git의 설치는 http://www.git-scm.com/ 참조
 
 2. Ruby 1.9.3+ 설치
 
-    Ruby는 잘 모르지만 Octopress의 설치 매뉴얼에 따르면 rbenv 와 RVM 두 가지 방법으로 Ruby의 설치가 가능한데, RVM이 더 간단해보여 여기서는 RVM으로 진행한다. 
+    Ruby는 잘 모르지만 Octopress의 설치 매뉴얼에 따르면 rbenv 와 RVM 두 가지 방법으로 Ruby의 설치가 가능한데, RVM이 더 간단해보여 여기서는 RVM으로 진행한다.
 
     - RVM 설치
-   
-        > curl -L https://get.rvm.io | bash -s stable --ruby
-    
+
+        > curl -L https://get.rvm.io | bash -s stable &#45;&#45;ruby
+
         처음 실행하면 아래와 같이 signature 관련 에러 발생하는데
 
         ![](http://i.imgur.com/PJ5MakW.png)
 
         화면에 안내된대로 아래의 명령을 수행하면 해결된다.
-        
-        > gpg --keyserver hkp://keys.gnupg.net --recv-keys #######
-         
-        다시 아래의 명령 실행        
 
-        > curl -L https://get.rvm.io | bash -s stable --ruby
+        > gpg &#45;&#45;keyserver hkp://keys.gnupg.net &#45;&#45;recv-keys #######
 
-        ![](http://i.imgur.com/GmoNNol.png)        
+        다시 아래의 명령 실행
+
+        > curl -L https://get.rvm.io | bash -s stable &#45;&#45;ruby
+
+        ![](http://i.imgur.com/GmoNNol.png)
 
         ![](http://i.imgur.com/ozqAHGM.png)
 
@@ -117,8 +117,8 @@ Octopress에서도 [설정 방법](http://octopress.org/docs/setup/)을 간단 �
     > rake install
 
     ![](http://i.imgur.com/zXx7ykO.png)
-    
-        
+
+
 ## Github Respository 생성
 
 GitHub 에서 이름이 GitHub_UserName.github.io 인 repository를 새로 생성한다(앞으로 `GitHub repo`라 한다).
@@ -146,15 +146,15 @@ GitHub 에서 이름이 GitHub_UserName.github.io 인 repository를 새로 생�
 - 블로그 URL 설정
 - octopress에 의해 생성된 최종 블로그 내용을 담는 `_deploy` 폴더에 별도의 repo(앞으로 `deploy repo`라 한다)와 `master` 브랜치 생성
 
-결론적으로 블로그를 생성하는 `octopress repo`는 `GitHub repo`의 `source` 브랜치로 저장되고, 
+결론적으로 블로그를 생성하는 `octopress repo`는 `GitHub repo`의 `source` 브랜치로 저장되고,
 
-octopress에 의해 생성되는 블로그 컨텐츠를 담고 있는 `deploy repo`의 `master` 브랜치가 `GitHub repo`의 `master` 브랜치로 저장되며, 
+octopress에 의해 생성되는 블로그 컨텐츠를 담고 있는 `deploy repo`의 `master` 브랜치가 `GitHub repo`의 `master` 브랜치로 저장되며,
 
 `http://GitHub_UserName.github.io/`로 접근하면 `GitHub repo`의 `master` 브랜치의 내용(즉, `deploy repo`에서 push 된 내용)이 브라우저에 표시된다.
 
 ## 블로그 생성 및 미리 보기
 
-1. 블로그 생성, markdown으로 작성한 포스트의 html 변환 등 수행 
+1. 블로그 생성, markdown으로 작성한 포스트의 html 변환 등 수행
 
     > rake generate
 
@@ -164,7 +164,7 @@ octopress에 의해 생성되는 블로그 컨텐츠를 담고 있는 `deploy re
 
 2. 블로그 미리 보기
 
-    `rake generate`으로 생성된 블로그를 아래의 명령으로 미리보기 할 수 있다.  
+    `rake generate`으로 생성된 블로그를 아래의 명령으로 미리보기 할 수 있다.
 
     > rake preview
 
@@ -173,7 +173,7 @@ octopress에 의해 생성되는 블로그 컨텐츠를 담고 있는 `deploy re
     - 위와 같이 `write public/stylesheets/screen.css` 까지 화면에 찍히면 브라우저에서 `http://localhost:4000/`로 접속해서 미리 보기를 확인할 수 있다.
 
     ![](http://i.imgur.com/I2lvl3n.png)
-    
+
 
 ## GitHub에 deploy
 
@@ -201,7 +201,7 @@ GitHub에 올리는 방법은 두 가지가 있다.
 
     > cd _deploy
 
-    > git branch --set-upstream-to=origin/master master
+    > git branch &#45;&#45;set-upstream-to=origin/master master
 
     를 실행하고, 다시 `rake deploy` 실행
 
@@ -219,9 +219,9 @@ GitHub에 올리는 방법은 두 가지가 있다.
 
     ![](http://i.imgur.com/QGODGpU.png)
 
-2. 일반적인 Git commit/push 활용 
+2. 일반적인 Git commit/push 활용
 
-    `rake deploy`도 사실 Git 명령을 wrapping한 것에 불과하다(자세한 내용은 `Rakefile` 파일을 열어보면 알 수 있다). 
+    `rake deploy`도 사실 Git 명령을 wrapping한 것에 불과하다(자세한 내용은 `Rakefile` 파일을 열어보면 알 수 있다).
 
     따라서 당연히 직접 Git로도 가능한데, 게시물 작성 후 `rake generate`에 의해 .html로 변환된 내용이 들어있는 public 폴더의 내용을 _deploy 폴더로 복사한 후 git add/commit/push를 수행하면 된다. 이 방식으로 하면 커밋 메시지를 원하는 대로 작성할 수 있는 장점도 있다.
 
