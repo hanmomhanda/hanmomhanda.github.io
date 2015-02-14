@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Github | 뒤태지존의 갈팡질팡]]></title>
   <link href="http://hanmomhanda.github.io//blog/categories/github/atom.xml" rel="self"/>
   <link href="http://hanmomhanda.github.io//"/>
-  <updated>2015-01-12T00:58:30+09:00</updated>
+  <updated>2015-02-14T13:37:28+09:00</updated>
   <id>http://hanmomhanda.github.io//</id>
   <author>
     <name><![CDATA[hanmomhanda]]></name>
@@ -308,7 +308,7 @@ body, a, h2, h3, h4, code  {
 <ul>
 <li><p>RVM 설치</p>
 
-<blockquote><p>curl -L <a href="https://get.rvm.io">https://get.rvm.io</a> | bash -s stable &ndash;ruby</p></blockquote>
+<blockquote><p>curl -L <a href="https://get.rvm.io">https://get.rvm.io</a> | bash -s stable &#45;&#45;ruby</p></blockquote>
 
 <p>  처음 실행하면 아래와 같이 signature 관련 에러 발생하는데</p>
 
@@ -316,11 +316,11 @@ body, a, h2, h3, h4, code  {
 
 <p>  화면에 안내된대로 아래의 명령을 수행하면 해결된다.</p>
 
-<blockquote><p>gpg &ndash;keyserver hkp://keys.gnupg.net &ndash;recv-keys #######</p></blockquote>
+<blockquote><p>gpg &#45;&#45;keyserver hkp://keys.gnupg.net &#45;&#45;recv-keys #######</p></blockquote>
 
 <p>  다시 아래의 명령 실행</p>
 
-<blockquote><p>curl -L <a href="https://get.rvm.io">https://get.rvm.io</a> | bash -s stable &ndash;ruby</p></blockquote>
+<blockquote><p>curl -L <a href="https://get.rvm.io">https://get.rvm.io</a> | bash -s stable &#45;&#45;ruby</p></blockquote>
 
 <p>  <img src="http://i.imgur.com/GmoNNol.png" alt="" /></p>
 
