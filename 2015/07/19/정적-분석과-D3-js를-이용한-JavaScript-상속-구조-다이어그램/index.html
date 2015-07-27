@@ -8,9 +8,46 @@
     <title>정적 분석과 D3.js를 이용한 JavaScript 상속 구조 다이어그램 - 뒤태지존의 끄적거림</title>
     <meta name="author" content="hanmomhanda">
     <meta name="description" content="뒤태지존의 끄적거림">
-    <link rel="icon" href="/assets/images/favicon.ico">
     
-        <link rel="alternative" type="application/atom+xml" title="RSS" href="atom.xml">
+        <link rel="icon" href="/assets/images/favicon.ico">
+    
+    
+        <link rel="alternative" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="Context모바일에 최적화 된 WebGL 라이브러리를 만들고 있는 MoGL 프로젝트에서는 MoGL이라는 최상위 클래스를 기준으로 여러 클래스들이 상속 구조를 형성하고 있다.
+상속 방법은 아래와 같이 표준화 되어 있다.
+123MoGL.extend(&apos;Matrix&apos;,&amp;#123;    ...&amp;#125;
+그렇다면 정적 분석을 통해서 위계(Hierarchy) 정보를">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="정적 분석과 D3.js를 이용한 JavaScript 상속 구조 다이어그램">
+<meta property="og:url" content="http://hanmomhanda.github.io/2015/07/19/정적-분석과-D3-js를-이용한-JavaScript-상속-구조-다이어그램/index.html">
+<meta property="og:site_name" content="뒤태지존의 끄적거림">
+<meta property="og:description" content="Context모바일에 최적화 된 WebGL 라이브러리를 만들고 있는 MoGL 프로젝트에서는 MoGL이라는 최상위 클래스를 기준으로 여러 클래스들이 상속 구조를 형성하고 있다.
+상속 방법은 아래와 같이 표준화 되어 있다.
+123MoGL.extend(&apos;Matrix&apos;,&amp;#123;    ...&amp;#125;
+그렇다면 정적 분석을 통해서 위계(Hierarchy) 정보를">
+<meta property="og:updated_time" content="2015-07-27T01:59:41.933Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="정적 분석과 D3.js를 이용한 JavaScript 상속 구조 다이어그램">
+<meta name="twitter:description" content="Context모바일에 최적화 된 WebGL 라이브러리를 만들고 있는 MoGL 프로젝트에서는 MoGL이라는 최상위 클래스를 기준으로 여러 클래스들이 상속 구조를 형성하고 있다.
+상속 방법은 아래와 같이 표준화 되어 있다.
+123MoGL.extend(&apos;Matrix&apos;,&amp;#123;    ...&amp;#125;
+그렇다면 정적 분석을 통해서 위계(Hierarchy) 정보를">
+    
+        <meta rel="publisher" content="https://plus.google.com/+오명운"/>
+    
+    
+    
+        <meta property="og:image" content="http://www.gravatar.com/avatar/c0979f4ba4647bb61e2d33b208de4c9f?s=640"/>
+    
+    
+        <meta property="og:image" content="/2015/07/19/정적-분석과-D3-js를-이용한-JavaScript-상속-구조-다이어그램/https://camo.githubusercontent.com/e1a1948f0bcfa095d54793afd3ab96af97731773/687474703a2f2f64336a732e6f72672f65782f636c75737465722e706e67"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://hanmomhanda.github.io/2015/07/19/정적-분석과-D3-js를-이용한-JavaScript-상속-구조-다이어그램/https://camo.githubusercontent.com/e1a1948f0bcfa095d54793afd3ab96af97731773/687474703a2f2f64336a732e6f72672f65782f636c75737465722e706e67" />
+    
+    
+        <meta property="og:image" content="/2015/07/19/정적-분석과-D3-js를-이용한-JavaScript-상속-구조-다이어그램/cover-static-analysis.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://hanmomhanda.github.io/2015/07/19/정적-분석과-D3-js를-이용한-JavaScript-상속-구조-다이어그램/cover-static-analysis.png" />
+    
     
     <!--STYLES-->
     <link rel="stylesheet" href="/assets/css/font-awesome.css" type="text/css">
@@ -19,6 +56,17 @@
     <link rel="stylesheet" href="/assets/css/tranquilpeak.css" type="text/css">
     <!--STYLES END-->
     
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-65345018-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
 </head>
 
     <body>
@@ -26,7 +74,7 @@
             <header id="header" data-behavior="1">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <h1 class="header-title">
-        <a class="header-title-link" href="http://hanmomhanda.github.io">뒤태지존의 끄적거림</a>
+        <a class="header-title-link" href="/ ">뒤태지존의 끄적거림</a>
     </h1>
     
         <a class="header-right-picture" href="/#about">
@@ -50,7 +98,9 @@
         
         <li class="sidebar-button">
             
-                <a  class="sidebar-button-link " href="/">
+                <a  class="sidebar-button-link "
+                    href="/ 
+                    ">
             
                     <i class="sidebar-button-icon fa fa-lg fa-home"></i>
                     <span class="sidebar-button-desc">Home</span>
@@ -59,7 +109,9 @@
         
         <li class="sidebar-button">
             
-                <a  class="sidebar-button-link " href="/all-categories">
+                <a  class="sidebar-button-link "
+                    href="/all-categories
+                            ">
             
                     <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
                     <span class="sidebar-button-desc">Categories</span>
@@ -68,7 +120,9 @@
         
         <li class="sidebar-button">
             
-                <a  class="sidebar-button-link " href="/all-tags">
+                <a  class="sidebar-button-link "
+                    href="/all-tags
+                            ">
             
                     <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
                     <span class="sidebar-button-desc">Tags</span>
@@ -77,7 +131,9 @@
         
         <li class="sidebar-button">
             
-                <a  class="sidebar-button-link " href="/all-archives">
+                <a  class="sidebar-button-link "
+                    href="/all-archives
+                            ">
             
                     <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
                     <span class="sidebar-button-desc">Archives</span>
@@ -86,7 +142,9 @@
         
         <li class="sidebar-button">
             
-                <a  class="sidebar-button-link st-search-show-outputs" href="/#search">
+                <a  class="sidebar-button-link st-search-show-outputs"
+                    href="/#search
+                            ">
             
                     <i class="sidebar-button-icon fa fa-lg fa-search"></i>
                     <span class="sidebar-button-desc">Search</span>
@@ -95,7 +153,9 @@
         
         <li class="sidebar-button">
             
-                <a  class="sidebar-button-link " href="/#about">
+                <a  class="sidebar-button-link "
+                    href="/#about
+                            ">
             
                     <i class="sidebar-button-icon fa fa-lg fa-question"></i>
                     <span class="sidebar-button-desc">About me</span>
@@ -112,7 +172,9 @@
         
         <li class="sidebar-button">
             
-                <a  class="sidebar-button-link " href="/atom.xml">
+                <a  class="sidebar-button-link "
+                    href="/atom.xml
+                            ">
             
                     <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
                     <span class="sidebar-button-desc">RSS</span>
@@ -147,7 +209,8 @@
         </div>
     
     <div class="post-content markdown main-content-wrap" itemprop="articleBody">
-        <h1 id="Context">Context</h1><p>모바일에 최적화 된 WebGL 라이브러리를 만들고 있는 <a href="https://github.com/projectBS/MoGL" target="_blank" rel="external">MoGL 프로젝트</a>에서는 <code>MoGL</code>이라는 최상위 클래스를 기준으로 여러 클래스들이 상속 구조를 형성하고 있다.</p>
+        
+            <h1 id="Context">Context</h1><p>모바일에 최적화 된 WebGL 라이브러리를 만들고 있는 <a href="https://github.com/projectBS/MoGL" target="_blank" rel="external">MoGL 프로젝트</a>에서는 <code>MoGL</code>이라는 최상위 클래스를 기준으로 여러 클래스들이 상속 구조를 형성하고 있다.</p>
 <p>상속 방법은 아래와 같이 표준화 되어 있다.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MoGL.extend(<span class="string">'Matrix'</span>,&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>그렇다면 정적 분석을 통해서 위계(Hierarchy) 정보를 담고 있는 자료 구조를 뽑아내서 시각화 라이브러리와 버무리면, <strong>실제 소스 코드와 언제나 Sync가 맞는 살아있는 다이어그램</strong>을 만들어 낼 수 있지 않을까?</p>
@@ -162,13 +225,14 @@
 <h1 id="D3-js">D3.js</h1><p>두말이 필요없는 굉장한 시각화 라이브러리인 <a href="https://github.com/mbostock/d3/wiki/Gallery" target="_blank" rel="external"><strong>D3.js</strong></a>에는 이런 위계 정보를 나타내는 다이어그램을 쉽게 만들 수 있는 여러가지 built-in 템플릿을 제공해준다. D3.js에는 이런 built-in 템플릿을 <code>layout</code>이라고 부른다.</p>
 <p>D3.js의 <code>Cluster layout</code>을 사용하면 쉽게(?) 다이어그램을 그릴 수 있다.</p>
 <p>여기서는 사실 <a href="http://bl.ocks.org/mbostock/4063570" target="_blank" rel="external">http://bl.ocks.org/mbostock/4063570</a> 에 있는 예제 중에서 <code>d3.json()</code>으로 json을 외부에서 가져오는 대신 위에서 만든 내부의 json을 사용하도록 변경한 부분 외에는 거의 그대로 갖다 썼다. 그래서 ‘쉽게’라고 할 수 있지만, 사실 D3.js가 그렇게 쉽지만은 않다.</p>
-<p>D3.js는 여러가지 다이어그램을 쉽게 그릴 수 있게 해주는 다양한 built-in API가 제공되지만, D3.js를 만든 <strong>Mike Bostock</strong> 형님도 늘 강조하듯, 화려한 시각화 뒤에 숨어있는 <strong>D3.js의 진정한 마술은 데이터와 Dom 요소를 매핑해주는 부분에 있다.</strong> 이 부분을 시각화를 이용해서 잘 설명해준 글이 있는데, 너무 좋아서 번역을 해뒀으니 <a href="http://hanmomhanda.github.io/Docs/d3/How-Selections-Work.html"><strong>여기</strong></a>를 참고하면 D3.js를 배우는 데 도움이 될 것이다.</p>
+<p>D3.js는 여러가지 다이어그램을 쉽게 그릴 수 있게 해주는 다양한 built-in API가 제공되지만, D3.js를 만든 <strong>Mike Bostock</strong> 형님도 늘 강조하듯, 화려한 시각화 뒤에 숨어있는 <strong>D3.js의 진정한 마술은 데이터와 DOM 요소를 매핑해주는 부분에 있다.</strong> 이 부분을 시각화를 이용해서 잘 설명해준 글이 있는데, 너무 좋아서 번역을 해뒀으니 <a href="http://hanmomhanda.github.io/Docs/d3/How-Selections-Work.html"><strong>여기</strong></a>를 참고하면 D3.js를 배우는 데 도움이 될 것이다.</p>
 <p>결과와 소스 코드는 <a href="http://projectbs.github.io/MoGL/lab/diagram/index.html" target="_blank" rel="external"><strong>여기</strong></a>에서 볼 수 있다.</p>
 <p>화려하진 않지만(물론 공을 더 들이면 화려하게 만들 수도 있다), 소스 코드가 바뀌면 다이어그램도 따라서 바뀌는 살아있는 문서라는 점에서 쓸모는 꽤 있을 것이다.</p>
 <h1 id="정리">정리</h1><ul>
 <li>JavaScript 프로젝트에서 <strong>표준화 된 상속 구문</strong>을 사용하면, <strong>정적 분석</strong>과 <strong>D3.js</strong>를 엮어서 <strong>살아있는 상속 구조 다이어그램</strong>을 만들 수 있다.</li>
 </ul>
 
+        
         
             
         
@@ -191,7 +255,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/07/21/Cross-Origin-Resource-Sharing/"  data-tooltip="Cross Origin Resource Sharing - CORS">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -208,32 +272,42 @@
         </ul>
     </nav>
     <ul class="post-actions post-action-share">
-        <li class="post-action">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
             <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hanmomhanda.github.io/2015/07/19/정적-분석과-D3-js를-이용한-JavaScript-상속-구조-다이어그램/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
-        <li class="post-action">
+        <li class="post-action hide-xs">
             <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hanmomhanda.github.io/2015/07/19/정적-분석과-D3-js를-이용한-JavaScript-상속-구조-다이어그램/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
-        <li class="post-action">
+        <li class="post-action hide-xs">
             <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hanmomhanda.github.io/2015/07/19/정적-분석과-D3-js를-이용한-JavaScript-상속-구조-다이어그램/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
         
-            <li class="post-action hide-xs">
+            <li class="post-action">
                 <a class="post-action-btn btn btn--default" href="#disqus_thread">
                     <i class="fa fa-comment-o"></i>
                 </a>
             </li>
         
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
     </ul>
 </div>
-
-
         
             <div id="disqus_thread">
     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
@@ -258,7 +332,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/07/21/Cross-Origin-Resource-Sharing/"  data-tooltip="Cross Origin Resource Sharing - CORS">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -275,33 +349,63 @@
         </ul>
     </nav>
     <ul class="post-actions post-action-share">
-        <li class="post-action">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
             <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hanmomhanda.github.io/2015/07/19/정적-분석과-D3-js를-이용한-JavaScript-상속-구조-다이어그램/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
-        <li class="post-action">
+        <li class="post-action hide-xs">
             <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hanmomhanda.github.io/2015/07/19/정적-분석과-D3-js를-이용한-JavaScript-상속-구조-다이어그램/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
-        <li class="post-action">
+        <li class="post-action hide-xs">
             <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hanmomhanda.github.io/2015/07/19/정적-분석과-D3-js를-이용한-JavaScript-상속-구조-다이어그램/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
         
-            <li class="post-action hide-xs">
+            <li class="post-action">
                 <a class="post-action-btn btn btn--default" href="#disqus_thread">
                     <i class="fa fa-comment-o"></i>
                 </a>
             </li>
         
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
     </ul>
 </div>
-
-
                 </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="1">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://hanmomhanda.github.io/2015/07/19/정적-분석과-D3-js를-이용한-JavaScript-상속-구조-다이어그램/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hanmomhanda.github.io/2015/07/19/정적-분석과-D3-js를-이용한-JavaScript-상속-구조-다이어그램/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hanmomhanda.github.io/2015/07/19/정적-분석과-D3-js를-이용한-JavaScript-상속-구조-다이어그램/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
             
         </div>
         <div id="about">

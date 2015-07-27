@@ -8,9 +8,50 @@
     <title>Java 객체 지향 디자인 패턴 - 뒤태지존의 끄적거림</title>
     <meta name="author" content="hanmomhanda">
     <meta name="description" content="뒤태지존의 끄적거림">
-    <link rel="icon" href="/assets/images/favicon.ico">
     
-        <link rel="alternative" type="application/atom+xml" title="RSS" href="atom.xml">
+        <link rel="icon" href="/assets/images/favicon.ico">
+    
+    
+        <link rel="alternative" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="들어가기무언가를 가능한 쉽게 익히려면 둘 중의 한가지가 필요하다.
+
+무언가를 필요로 하는 컨텍스트를 직관적으로 파악할 수 있을 만큼 적절한 예제
+무언가를 쓰기 전과 쓴 후를 비교해서 이해할 수 있는 설명
+
+사실 어떤 것이든 직관적으로 파악할 수 있는 것이 가장 좋지만, 다루는 내용 자체가 원천적으로 복잡한 경우에는 직관적으로 알 수 있게 해주는 것이 현실적">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Java 객체 지향 디자인 패턴">
+<meta property="og:url" content="http://hanmomhanda.github.io/2015/07/14/Java-객체-지향-디자인-패턴/index.html">
+<meta property="og:site_name" content="뒤태지존의 끄적거림">
+<meta property="og:description" content="들어가기무언가를 가능한 쉽게 익히려면 둘 중의 한가지가 필요하다.
+
+무언가를 필요로 하는 컨텍스트를 직관적으로 파악할 수 있을 만큼 적절한 예제
+무언가를 쓰기 전과 쓴 후를 비교해서 이해할 수 있는 설명
+
+사실 어떤 것이든 직관적으로 파악할 수 있는 것이 가장 좋지만, 다루는 내용 자체가 원천적으로 복잡한 경우에는 직관적으로 알 수 있게 해주는 것이 현실적">
+<meta property="og:image" content="http://image.yes24.com/goods/12501269/L">
+<meta property="og:updated_time" content="2015-07-20T01:56:49.511Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java 객체 지향 디자인 패턴">
+<meta name="twitter:description" content="들어가기무언가를 가능한 쉽게 익히려면 둘 중의 한가지가 필요하다.
+
+무언가를 필요로 하는 컨텍스트를 직관적으로 파악할 수 있을 만큼 적절한 예제
+무언가를 쓰기 전과 쓴 후를 비교해서 이해할 수 있는 설명
+
+사실 어떤 것이든 직관적으로 파악할 수 있는 것이 가장 좋지만, 다루는 내용 자체가 원천적으로 복잡한 경우에는 직관적으로 알 수 있게 해주는 것이 현실적">
+    
+        <meta rel="publisher" content="https://plus.google.com/+오명운"/>
+    
+    
+    
+        <meta property="og:image" content="http://www.gravatar.com/avatar/c0979f4ba4647bb61e2d33b208de4c9f?s=640"/>
+    
+    
+        <meta property="og:image" content="/2015/07/14/Java-객체-지향-디자인-패턴/http://image.yes24.com/goods/12501269/L"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://hanmomhanda.github.io/2015/07/14/Java-객체-지향-디자인-패턴/http://image.yes24.com/goods/12501269/L" />
+    
+    
     
     <!--STYLES-->
     <link rel="stylesheet" href="/assets/css/font-awesome.css" type="text/css">
@@ -19,6 +60,17 @@
     <link rel="stylesheet" href="/assets/css/tranquilpeak.css" type="text/css">
     <!--STYLES END-->
     
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-65345018-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
 </head>
 
     <body>
@@ -26,7 +78,7 @@
             <header id="header" data-behavior="1">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <h1 class="header-title">
-        <a class="header-title-link" href="http://hanmomhanda.github.io">뒤태지존의 끄적거림</a>
+        <a class="header-title-link" href="/ ">뒤태지존의 끄적거림</a>
     </h1>
     
         <a class="header-right-picture" href="/#about">
@@ -50,7 +102,9 @@
         
         <li class="sidebar-button">
             
-                <a  class="sidebar-button-link " href="/">
+                <a  class="sidebar-button-link "
+                    href="/ 
+                    ">
             
                     <i class="sidebar-button-icon fa fa-lg fa-home"></i>
                     <span class="sidebar-button-desc">Home</span>
@@ -59,7 +113,9 @@
         
         <li class="sidebar-button">
             
-                <a  class="sidebar-button-link " href="/all-categories">
+                <a  class="sidebar-button-link "
+                    href="/all-categories
+                            ">
             
                     <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
                     <span class="sidebar-button-desc">Categories</span>
@@ -68,7 +124,9 @@
         
         <li class="sidebar-button">
             
-                <a  class="sidebar-button-link " href="/all-tags">
+                <a  class="sidebar-button-link "
+                    href="/all-tags
+                            ">
             
                     <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
                     <span class="sidebar-button-desc">Tags</span>
@@ -77,7 +135,9 @@
         
         <li class="sidebar-button">
             
-                <a  class="sidebar-button-link " href="/all-archives">
+                <a  class="sidebar-button-link "
+                    href="/all-archives
+                            ">
             
                     <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
                     <span class="sidebar-button-desc">Archives</span>
@@ -86,7 +146,9 @@
         
         <li class="sidebar-button">
             
-                <a  class="sidebar-button-link st-search-show-outputs" href="/#search">
+                <a  class="sidebar-button-link st-search-show-outputs"
+                    href="/#search
+                            ">
             
                     <i class="sidebar-button-icon fa fa-lg fa-search"></i>
                     <span class="sidebar-button-desc">Search</span>
@@ -95,7 +157,9 @@
         
         <li class="sidebar-button">
             
-                <a  class="sidebar-button-link " href="/#about">
+                <a  class="sidebar-button-link "
+                    href="/#about
+                            ">
             
                     <i class="sidebar-button-icon fa fa-lg fa-question"></i>
                     <span class="sidebar-button-desc">About me</span>
@@ -112,7 +176,9 @@
         
         <li class="sidebar-button">
             
-                <a  class="sidebar-button-link " href="/atom.xml">
+                <a  class="sidebar-button-link "
+                    href="/atom.xml
+                            ">
             
                     <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
                     <span class="sidebar-button-desc">RSS</span>
@@ -145,7 +211,8 @@
 </div>
     
     <div class="post-content markdown main-content-wrap" itemprop="articleBody">
-        <img src="http://image.yes24.com/goods/12501269/L">
+        
+            <img src="http://image.yes24.com/goods/12501269/L">
 <h1 id="들어가기">들어가기</h1><p>무언가를 가능한 쉽게 익히려면 둘 중의 한가지가 필요하다.</p>
 <ul>
 <li>무언가를 필요로 하는 컨텍스트를 직관적으로 파악할 수 있을 만큼 적절한 예제</li>
@@ -173,6 +240,7 @@
 <li>다시 <a href="http://www.yes24.com/24/goods/18249021" target="_blank" rel="external"><strong>객체 지향의 사실과 오해</strong></a>를 읽는다.</li>
 </ul>
 
+        
         
             
         
@@ -212,32 +280,42 @@
         </ul>
     </nav>
     <ul class="post-actions post-action-share">
-        <li class="post-action">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
             <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hanmomhanda.github.io/2015/07/14/Java-객체-지향-디자인-패턴/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
-        <li class="post-action">
+        <li class="post-action hide-xs">
             <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hanmomhanda.github.io/2015/07/14/Java-객체-지향-디자인-패턴/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
-        <li class="post-action">
+        <li class="post-action hide-xs">
             <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hanmomhanda.github.io/2015/07/14/Java-객체-지향-디자인-패턴/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
         
-            <li class="post-action hide-xs">
+            <li class="post-action">
                 <a class="post-action-btn btn btn--default" href="#disqus_thread">
                     <i class="fa fa-comment-o"></i>
                 </a>
             </li>
         
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
     </ul>
 </div>
-
-
         
             <div id="disqus_thread">
     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
@@ -279,33 +357,63 @@
         </ul>
     </nav>
     <ul class="post-actions post-action-share">
-        <li class="post-action">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
             <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hanmomhanda.github.io/2015/07/14/Java-객체-지향-디자인-패턴/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
-        <li class="post-action">
+        <li class="post-action hide-xs">
             <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hanmomhanda.github.io/2015/07/14/Java-객체-지향-디자인-패턴/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
-        <li class="post-action">
+        <li class="post-action hide-xs">
             <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hanmomhanda.github.io/2015/07/14/Java-객체-지향-디자인-패턴/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
         
-            <li class="post-action hide-xs">
+            <li class="post-action">
                 <a class="post-action-btn btn btn--default" href="#disqus_thread">
                     <i class="fa fa-comment-o"></i>
                 </a>
             </li>
         
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
     </ul>
 </div>
-
-
                 </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="1">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://hanmomhanda.github.io/2015/07/14/Java-객체-지향-디자인-패턴/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hanmomhanda.github.io/2015/07/14/Java-객체-지향-디자인-패턴/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hanmomhanda.github.io/2015/07/14/Java-객체-지향-디자인-패턴/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
             
         </div>
         <div id="about">
