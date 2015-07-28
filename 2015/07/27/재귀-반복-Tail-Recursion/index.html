@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://hanmomhanda.github.io/2015/07/27/재귀-반복-Tail-Recursion/stack-overflow.png">
 <meta property="og:image" content="http://hanmomhanda.github.io/2015/07/27/재귀-반복-Tail-Recursion/tail-call-optimization-not-supported.png">
 <meta property="og:image" content="http://hanmomhanda.github.io/2015/07/27/재귀-반복-Tail-Recursion/loop-billion.png">
-<meta property="og:updated_time" content="2015-07-28T06:55:48.198Z">
+<meta property="og:updated_time" content="2015-07-28T07:42:40.704Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="재귀, 반복, Tail Recursion">
 <meta name="twitter:description" content="fibonacci(피보나치) 수열잘 알려져 있듯 피보나치 수열은 다음과 같다.
@@ -386,7 +386,7 @@
 <h1 id="Tail_Call_Optimization">Tail Call Optimization</h1><p>그런데, 프로그래머가 할 수 있는 일은 여기까지다. 즉, 반환 받은 후 아무일도 하지 않게끔 하는 Tail Call 방식으로 짜는 것까지는 프로그래머가 할 수 있는 일이지만, <strong>Tail Call 방식으로 짰다고 해도 그런 코드를 돌리는 실행 환경에서는 내부적으로 여전히 Stack을 새로 만들어 추가하는 비효율적인 방식으로 동작할 수도 있다.</strong></p>
 <p>이름에서도 짐작할 수 있는 Tail Call 최적화는 다음과 같다.</p>
 <blockquote>
-<p>Tail Call 방식으로 짜여지면 Stack을 새로 만들지 않고 이미 있는 Stack 속의 값만 대체해서 Stack을 재사용하는 방식으로 동작하도록 최적화 할 수 있다. 이러한 최적화를 <a href="http://c2.com/cgi/wiki?TailCallOptimization" target="_blank" rel="external"><strong>Tail Call Optimization(또는 Tail Call Elimination)</strong></a>이라고 하며 <strong>언어의 실행 환경해에서 지원해줘야 한다.</strong></p>
+<p>Tail Call 방식으로 짜여지면 Stack을 새로 만들지 않고 이미 있는 Stack 속의 값만 대체해서 Stack을 재사용하는 방식으로 동작하도록 최적화 할 수 있다. 이러한 최적화를 <a href="http://c2.com/cgi/wiki?TailCallOptimization" target="_blank" rel="external"><strong>Tail Call Optimization(또는 Tail Call Elimination)</strong></a>이라고 하며 <strong>언어의 실행 환경에서 지원해줘야 한다.</strong></p>
 </blockquote>
 <h1 id="Tail_Recursion">Tail Recursion</h1><p>그럼 <strong>Tail Recursion</strong>은 또 뭔가. 짐작 하겠지만 다음과 같다.</p>
 <blockquote>
@@ -402,7 +402,7 @@
 <p>참고로 반복 방식과 동일한 로직이 사용될 수 있다는 면을 보여주기 위해 위와 같이 구현했지만, 사실 조금 더 깔끔한 답안은 아래와 같다.</p>
 <figure class="highlight javascript"><figcaption><span>Tail Recursion 더 깔끔한 구현</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fibonacciTailRecursion</span>(<span class="params">n, cached_1, cached_2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> n * cached_1;</span><br><span class="line">    <span class="keyword">return</span> fibonacciTailRecursion(n - <span class="number">1</span>, cached_1 + cached_2, cached_1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>결국 <code>f(n) = f(n - 1) + f(n - 2)</code>를 <code>f(n, c1, c2) = f(n - 1, c1 + c2, c1)</code>로 바꿔서 두 겹이었던 재귀 호출을 한 겹으로 바꾼 것이다.</p>
-<p>위에서 구현한 Tail Recursion 호출 과정을 풀어보면 아래와 같다. 들여쓰기는 Stack의 깊이를 나타낸다.</p>
+<p>위에서 구현한 Tail Recursion 호출 과정을 n = 6 일때를 예를 들어 풀어보면 아래와 같다. 들여쓰기는 Stack의 깊이를 나타낸다.</p>
 <figure class="highlight javascript"><figcaption><span>가운데에 있는 두 번째 파라미터의 값이 피보나치 수</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">call fibonacciTailRecursion(<span class="number">6</span>, <span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line">  call fibonacciTailRecursion(<span class="number">5</span>, <span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">    call fibonacciTailRecursion(<span class="number">4</span>, <span class="number">2</span>, <span class="number">1</span>)</span><br><span class="line">      call fibonacciTailRecursion(<span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">        call fibonacciTailRecursion(<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">          call fibonacciTailRecursion(<span class="number">1</span>, <span class="number">8</span>, <span class="number">5</span>)</span><br><span class="line">          <span class="keyword">return</span> <span class="number">8</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">8</span></span><br><span class="line">      <span class="keyword">return</span> <span class="number">8</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">8</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">8</span></span><br><span class="line"><span class="keyword">return</span> <span class="number">8</span></span><br></pre></td></tr></table></figure>
 <p>위에서 보았던 것보다 훨씬 깔끔하다. 함수 호출 횟수도 25회에서 n과 동일한 6회로 줄었다.</p>
 <p>여기에 Tail Call Optimization이 적용되면 다음과 같이 Stack의 사용마저 최적화 된다.</p>
@@ -416,7 +416,7 @@
 <p>따라서 n까지의 합을 통해 브라우저의 Tail Call Optimization 지원 여부를 확인해보자.</p>
 <h3 id="단순_재귀_호출_버전">단순 재귀 호출 버전</h3><p>앞의 <code>함수 호출의 비용, Stack</code> 단원에서 살펴봤던 것처럼, 단순 재귀 호출 방식에서는 Chrome 기준으로 n = 10만이면 에러가 났었다.</p>
 <img src="/2015/07/27/재귀-반복-Tail-Recursion/stack-overflow.png" alt="stack-overflow.png" title="">
-<p><br><br>따라서 Tail Recursion 방식으로 n = 10만일때 값을 계산할 때 Stack 에러가 나지 않고 제대로 계산한다면 Tail Call Optimization이 적용되어 있다고 판단할 수 있다.</p>
+<p><br><br>따라서 Tail Recursion 방식으로 n = 10만일때 값을 계산할 때 Stack 에러가 나지 않고 제대로 계산한다면 Tail Call Optimization이 적용되어 있다고 근사적으로 판단할 수 있다.</p>
 <h3 id="Tail_Recursion_버전">Tail Recursion 버전</h3><figure class="highlight javascript"><figcaption><span>반복을 사용해서 구한 n까지의 합</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumTailRecursion</span>(<span class="params">n, accumulator</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> accumulator;</span><br><span class="line">    accumulator += n;</span><br><span class="line">    <span class="keyword">return</span> sumTailRecursion(--n, accumulator);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <img src="/2015/07/27/재귀-반복-Tail-Recursion/tail-call-optimization-not-supported.png" alt="tail-call-optimization-not-supported.png" title="">
 <p><br><br>Chrome에서는 보는 바와 같이 n = 1만까지는 괜찮지만 n = 10만을 실행하면 단순 재귀 호출 방식일 때와 마찬가지로 Stack 에러가 발생한다. 참고로 Mozilla에서는 n = 1만에서도 에러가 발생한다.</p>
@@ -426,7 +426,7 @@
 <figure class="highlight javascript"><figcaption><span>반복을 사용해서 구한 n까지의 합</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumLoop</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> accumulator = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(n) &#123;</span><br><span class="line">        accumulator += n--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> accumulator;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <img src="/2015/07/27/재귀-반복-Tail-Recursion/loop-billion.png" alt="loop-billion.png" title="">
 <p><br></p>
-<p>반복 버전의 경우 n = 1억 까지는 거의 바로 계산 결과가 나오고, n = 10억에서도 2초가 채 안 걸린 듯 하고, n = 100억은 10초 이상 소요가 되지만 계산 결과가 나오기는 한다. 물론 앞에서 언급한 JavaScript의 부동소수형 정확도 한계로 오차는 있다.</p>
+<p>반복 버전의 경우 n = 1억 까지는 거의 바로 계산 결과가 나오고, n = 10억에서도 2초가 채 안 걸린 듯 하고, n = 100억은 10초 이상 소요가 되지만 계산 결과가 나오기는 한다. 물론 앞에서 언급한 JavaScript의 부동소수형 정확도 한계로 인한 오차는 있다.</p>
 <h1 id="정리">정리</h1><p>재귀 호출은 무한루프를 타지 않도록 탈출 로직만 잘 다듬으면 전체적으로는 직관적이고 이해하기 쉬운 코드를 작성할 수 있게 해준다.</p>
 <p>하지만 <strong>재귀 호출을 두 겹 이상으로 사용하면 함수 호출 횟수가 상상하지 못할 정도로 증가</strong>하는 문제가 발생하고, <strong>재귀 호출 깊이가 깊어지면 Stack을 많이 사용</strong>하는 문제가 발생한다.</p>
 <p>이럴 때는 <strong>재귀 호출 대신 반복이나 Tail Recursion 방식으로 구현하면 문제 상황을 피해갈 수 있다.</strong><br>만약 <strong>JavaScript처럼 실행 환경에서 Tail Call Optimization을 지원해주지 않으면 사실 상 유일한 해결책은 반복문 뿐이다.</strong></p>
@@ -439,6 +439,7 @@
 <li>Java의 Tail Call - <a href="http://www.drdobbs.com/jvm/tail-call-optimization-and-java/240167044" target="_blank" rel="external">http://www.drdobbs.com/jvm/tail-call-optimization-and-java/240167044</a></li>
 <li>JavaScript의 Tail Call - <a href="http://www.2ality.com/2015/06/tail-call-optimization.html" target="_blank" rel="external">http://www.2ality.com/2015/06/tail-call-optimization.html</a></li>
 <li>브라우저의 재귀 호출 깊이 한계 - <a href="http://jsfiddle.net/9YMDF/9/" target="_blank" rel="external">http://jsfiddle.net/9YMDF/9/</a></li>
+<li>류종택의 프로그래밍 강의실 - <a href="http://ryulib.tistory.com/318" target="_blank" rel="external">http://ryulib.tistory.com/318</a></li>
 </ul>
 
         
