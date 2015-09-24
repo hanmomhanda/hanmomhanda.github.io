@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://i.imgur.com/OBX9TjJ.png">
 <meta property="og:image" content="http://i.imgur.com/rmS6BlT.png">
 <meta property="og:image" content="http://i.imgur.com/Lp3R5qe.png">
-<meta property="og:updated_time" content="2015-09-23T10:19:50.783Z">
+<meta property="og:updated_time" content="2015-09-24T11:30:59.383Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Selenium 꿀팁">
 <meta name="twitter:description" content="Selenium개요Selenium은 테스트 코드 실행으로 브라우저에서의 액션을 테스트 할 수 있게 해주는 테스팅 도구다.Selenium IDE로 브라우저 상에서의 액션을 녹화해서 테스트 코드를 생성할 수 있으며, 그 테스트 코드를 Eclipse나 IntelliJ 같은 IDE의 런타임에서 JUnit 테스트와 같은 방식으로 실행해서 브라우저 상에서의 액션을 재">
@@ -315,6 +315,19 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">js.executeScript(<span class="string">"scroll(0, 300)"</span>);</span><br><span class="line">driver.findElement(By.id(<span class="string">"toMyList"</span>)).click();</span><br></pre></td></tr></table></figure>
 <p>아래와 같이 jQuery를 이용하면 일부러 scroll을 시켜 viewport를 맞춰주지 않아도 해당 Element를 찾아서 이벤트를 발생시킬 수 있다.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">js.executeScript(<span class="string">"$('#toMyList').click()"</span>);</span><br></pre></td></tr></table></figure>
+<p>jQuery를 이용하는 방법은 특히 다음과 같은 상황에서 유용하다.</p>
+<blockquote>
+<ul>
+<li>viewport에 안 보이는 hidden 필드에 값을 쓰거나 읽을 때<ul>
+<li>hidden 필드는 HTML 기준으로는 현재의 viewport 내에 위치하더라도 <code>driver.findElement(By.id(&quot;ID&quot;))</code>의 방식으로 찾지 못한다.</li>
+</ul>
+</li>
+<li>어떤 요소에 이벤트 핸들러가 있는 경우<ul>
+<li><code>js.executeScript(&quot;$(&#39;#eventDispatcher&#39;).change()&quot;)</code>와 같은 식으로 이벤트를 발생시키면 이벤트 핸들러가 실행된다.</li>
+</ul>
+</li>
+</ul>
+</blockquote>
 <p>동일한 원리로 jQuery 뿐 아니라 웹 페이지에 사용하도록 설정만 되어 있다면 jQuery 뿐 아니라 다른 라이브러리도 사용할 수 있다.</p>
 <h2 id="select_요소_테스트">select 요소 테스트</h2><p>아마도 버그로 추정되는데, 테스트를 하다보면 <code>select</code>에 대한 테스트가 의도한대로 동작하지 않는 경우가 있다.<br><a href="http://www.seleniumhq.org/docs/03_webdriver.jsp#user-input-filling-in-forms" target="_blank">Selenium API</a>에 보면 <code>select</code>의 선택 항목을 변경하는 코드는 아래와 같다.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Select select = <span class="keyword">new</span> Select(driver.findElement(By.tagName(<span class="string">"select"</span>)));</span><br><span class="line">select.deselectAll();</span><br><span class="line">select.selectByVisibleText(<span class="string">"Edam"</span>);</span><br></pre></td></tr></table></figure>
