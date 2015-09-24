@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://i.imgur.com/OBX9TjJ.png">
 <meta property="og:image" content="http://i.imgur.com/rmS6BlT.png">
 <meta property="og:image" content="http://i.imgur.com/Lp3R5qe.png">
-<meta property="og:updated_time" content="2015-09-24T11:30:59.383Z">
+<meta property="og:updated_time" content="2015-09-24T13:54:23.759Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Selenium 꿀팁">
 <meta name="twitter:description" content="Selenium개요Selenium은 테스트 코드 실행으로 브라우저에서의 액션을 테스트 할 수 있게 해주는 테스팅 도구다.Selenium IDE로 브라우저 상에서의 액션을 녹화해서 테스트 코드를 생성할 수 있으며, 그 테스트 코드를 Eclipse나 IntelliJ 같은 IDE의 런타임에서 JUnit 테스트와 같은 방식으로 실행해서 브라우저 상에서의 액션을 재">
@@ -315,6 +315,10 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">js.executeScript(<span class="string">"scroll(0, 300)"</span>);</span><br><span class="line">driver.findElement(By.id(<span class="string">"toMyList"</span>)).click();</span><br></pre></td></tr></table></figure>
 <p>아래와 같이 jQuery를 이용하면 일부러 scroll을 시켜 viewport를 맞춰주지 않아도 해당 Element를 찾아서 이벤트를 발생시킬 수 있다.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">js.executeScript(<span class="string">"$('#toMyList').click()"</span>);</span><br></pre></td></tr></table></figure>
+<p>아이디에 <code>.</code>이 포함된 경우 일반적인 JavaScript 코드에서는 아래와 같이 역슬래쉬를 2번 써줘야 하지만,</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#collegeList0\\.schlCode'</span>).val(<span class="string">'219'</span>);</span><br></pre></td></tr></table></figure>
+<p>Selenium 코드에서는 JavaScript 코드를 <code>js.executeScript(&quot;&quot;)</code>로 한 번 더 감싸주므로 아래와 같이 역슬래쉬를 4번 써줘야 한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">js.executeScript(<span class="string">"$('#collegeList0\\\\.schlCode').val('219')"</span>);</span><br></pre></td></tr></table></figure>
 <p>jQuery를 이용하는 방법은 특히 다음과 같은 상황에서 유용하다.</p>
 <blockquote>
 <ul>
