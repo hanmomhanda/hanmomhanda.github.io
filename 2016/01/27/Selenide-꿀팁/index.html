@@ -23,7 +23,7 @@
 <meta property="og:description" content="SelenideSelenide(셀레나이드)는 브라우저에서의 액션을 테스트 할 수 있게 해주는 테스팅 도구다.
 이름에서 “어? 어디서 본 듯한?”하는 말이 떠오를 수 있는데, 그 짐작이 맞다.Selenium이 WebDriver라는 기술 기반으로 브라우저 테스팅을 위한 저수준 API를 제공한다면, Selenide는 Selenium을 더 쓰기 쉽도록 고수준 Ja">
 <meta property="og:image" content="http://hanmomhanda.github.io/2016/01/27/Selenide-꿀팁/selenide-01.png">
-<meta property="og:updated_time" content="2016-01-27T13:25:29.954Z">
+<meta property="og:updated_time" content="2016-01-27T13:34:54.582Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Selenide 꿀팁">
 <meta name="twitter:description" content="SelenideSelenide(셀레나이드)는 브라우저에서의 액션을 테스트 할 수 있게 해주는 테스팅 도구다.
@@ -216,7 +216,7 @@
 </li>
 <li><p>Selenium과 마찬가지로 화면(viewport)에 렌더링되지 않은 요소에는 값 세팅이나 이벤트 유발이 불가능하다.</p>
 <ul>
-<li>결국 해당 요소가 렌더링 되도록 적절히 화면을 적절히 scroll 해주는 소스를 직접 작성해야 하는데, 그래서일까 <code>$(&quot;#css-selector&quot;).scroll();</code> 처럼 쉽고 직관적인 API를 제공해준다.</li>
+<li>결국 해당 요소가 렌더링 되도록 적절히 화면을 적절히 scroll 해주는 소스를 직접 작성해야 하는데, 그래서일까 <code>$(&quot;#css-selector&quot;).scrollTo();</code> 처럼 쉽고 직관적인 API를 제공해준다.</li>
 </ul>
 </li>
 </ul>
